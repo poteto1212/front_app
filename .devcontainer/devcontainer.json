@@ -1,0 +1,6 @@
+{
+	"name": "Predict_Front-server",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/src"
+}
