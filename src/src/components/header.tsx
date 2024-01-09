@@ -5,12 +5,11 @@ type Props = {
     subtitle: string
 }
 
-
 export default function Header({title,subtitle}:Props){
     return(
     <Head>
-        <p>{title} </p>
-        <p>{subtitle} </p>
+      <p>{title} </p>
+      <p>{subtitle} </p>
     </Head>
     )
 }
