@@ -1,5 +1,8 @@
-import { useState} from 'react';
+import {useState} from 'react';
 // import { text } from 'stream/consumers';
+import styled from "styled-components";
+import Header from '@/components/header';
+
 export default function Predict_dm_1() {
     const [age,setAge] = useState<number>()
     function reload_age(age: number){
@@ -7,7 +10,10 @@ export default function Predict_dm_1() {
     }
     return (
     <>
-        <h1>年齢入力</h1>
+        <Header
+            title='ロジスティクス回帰モデルによる'
+            subtitle='糖尿病予測_その1'
+        />
         <input
             type='number'
             pattern='[1-9]|[1-9][0-9]|100'
