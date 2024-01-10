@@ -1,18 +1,20 @@
 import styled from "styled-components";
-
+import {memo} from 'react'
 type Props = {
     title: string
     subtitle: string
 }
 
-export default function Header({title,subtitle}:Props){
+const Header = ({title,subtitle}:Props) => {
     return(
     <Head>
       <p>{title} </p>
       <p>{subtitle} </p>
     </Head>
     )
-}
+};
+
+export default memo(Header);
 
 const Head = styled.div`
   position: relative;

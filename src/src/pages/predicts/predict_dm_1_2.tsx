@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import Header from '@/components/header';
 
-export default function MyComponent() {
+const Predict_dm_1 = ()=> {
   return (
     <>
       <Header
@@ -20,9 +20,10 @@ export default function MyComponent() {
       </Overview>
 
       <Predict_dm_1_form>
-        <Div4>
+        <Form_title>
           <p>主な説明変数</p>
-        </Div4>
+        </Form_title>
+        
         <Div5>
           <p>身長(cm)</p>
         </Div5>
@@ -133,7 +134,7 @@ const Predict_dm_1_form = styled.div`
   margin: 20px auto 0;
 `;
 
-const Div4 = styled.div`
+const Form_title = styled.div`
   position: relative;
   margin-top: 20px;
   height: auto;
@@ -383,3 +384,5 @@ const Div16 = styled.div`
   font-size: 25px;
   max-width: 500px;
 `;
+
+export default Predict_dm_1
