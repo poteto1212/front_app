@@ -86,14 +86,15 @@ export default function MyComponent() {
         </Div11>
         <Button>予測の実行</Button>
       </Predict_dm_1_form>
-      <Div14>
+      
+      <Ans_dm_1>
         <Div15>
           <p>予測結果</p>
         </Div15>
         <Div16>
           <p>DMの可能性が~</p>
         </Div16>
-      </Div14>
+      </Ans_dm_1>
     </>
   );
 }
@@ -163,7 +164,7 @@ const FormInput1 = styled.input`
   max-width: 700px;
   padding: 15px 200px 15px 10px;
   @media (max-width: 991px) {
-    max-width: 300px;
+    max-width: 100%;
     padding: 15px 0;
   }
 `;
@@ -179,7 +180,7 @@ const FormInput2 = styled.input`
   max-width: 700px;
   padding: 15px 200px 15px 10px;
   @media (max-width: 991px) {
-    max-width: 300px;
+    max-width: 100%;
     padding: 15px 0;
   }
 `;
@@ -214,7 +215,7 @@ const FormInput3 = styled.input`
   max-width: 700px;
   padding: 15px 200px 15px 10px;
   @media (max-width: 991px) {
-    max-width: 300px;
+    max-width: 100%;
     padding: 15px 0;
   }
 `;
@@ -240,7 +241,7 @@ const FormInput4 = styled.input`
   max-width: 700px;
   padding: 15px 200px 15px 10px;
   @media (max-width: 991px) {
-    max-width: 300px;
+    max-width: 100%;
     padding: 15px 0;
   }
 `;
@@ -266,7 +267,7 @@ const FormInput5 = styled.input`
   max-width: 700px;
   padding: 15px 200px 15px 10px;
   @media (max-width: 991px) {
-    max-width: 300px;
+    max-width: 100%;
     padding: 15px 0;
   }
 `;
@@ -292,7 +293,7 @@ const FormInput6 = styled.input`
     max-width: 700px;
     padding: 15px 200px 15px 10px;
     @media (max-width: 991px) {
-    max-width: 300px;
+    max-width: 100%;
     padding: 15px 0;
     }
 `;
@@ -357,12 +358,14 @@ const Button = styled.button`
   }
 `;
 
-const Div14 = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 20px;
-  height: auto;
+const Ans_dm_1 = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: auto;
+    padding-bottom: 30px;
+    max-width: 700px;
+    margin: 20px auto 0;
 `;
 
 const Div15 = styled.div`
@@ -380,5 +383,3 @@ const Div16 = styled.div`
   font-size: 25px;
   max-width: 500px;
 `;
-
-
