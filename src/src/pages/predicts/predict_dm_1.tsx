@@ -2,8 +2,7 @@ import {useState} from 'react';
 // import { text } from 'stream/consumers';
 import styled from "styled-components";
 import Header from '@/components/header';
-import Image from 'next/image'
-import logistic_regression_image from "../../images/logistic_regression.png";
+
 
 export default function Predict_dm_1() {
     const [age,setAge] = useState<number>()
