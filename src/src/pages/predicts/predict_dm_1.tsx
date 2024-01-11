@@ -10,28 +10,29 @@ export default function Predict_dm_1() {
         return setAge(age)
     }
 
-    // const logistic_regression_image = "../../images/logistic_regression.png"
     return (
     <>
-        <Header
-            title='ロジスティクス回帰モデルによる'
-            subtitle='糖尿病予測_その1'
-        />
+      <Header
+        title='ロジスティクス回帰モデルによる'
+        subtitle='糖尿病予測_その1'
+      />
 
-        <Explanatory_Img
-            loading='lazy'
-            src = '/images/logistic_regression.png'
-        />
-        <input
-            type='number'
-            pattern='[1-9]|[1-9][0-9]|100'
-            value={age}
-            placeholder="年齢入力"
-            onChange={e => {
-                reload_age(e.target.valueAsNumber)
-            }}
-        />
-        <p>入力年齢: {age}</p>
+      <Explanatory_Img
+        loading='lazy'
+        src = '/images/logistic_regression.png'
+      />
+      
+      <input
+        type='number'
+        pattern='[1-9]|[1-9][0-9]|100'
+        value={age}
+        placeholder="年齢入力"
+        onChange={e => {
+          reload_age(e.target.valueAsNumber)
+        }}
+      />
+
+      <p>入力年齢: {age}</p>
     </>
 
     );
