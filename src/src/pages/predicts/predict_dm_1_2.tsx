@@ -1,15 +1,17 @@
 import * as React from "react";
 import styled from "styled-components";
-import Header from '@/components/header';
+import Header from '@/components/layouts/header';
 import Predict_dm_1_form from "@/components/forms/predict_dm_1_form";
-
+import Namber from "@/components/layouts/namver";
+import EBM_form from "@/components/forms/ebm_form";
 const Predict_dm_1 = ()=> {
   return (
     <>
-      <Header
-            title='ロジスティクス回帰モデルによる'
-            subtitle='糖尿病予測_その1'
-        />
+      <Namber/>
+      <Header>
+        <p>ロジスティクス回帰モデルによる</p>
+        <p>糖尿病予測_その1</p>
+      </Header>
 
       <Img
         loading="lazy"
@@ -30,6 +32,7 @@ const Predict_dm_1 = ()=> {
           <p>DMの可能性が~</p>
         </Div16>
       </Ans_dm_1>
+      <EBM_form/>
     </>
   );
 }

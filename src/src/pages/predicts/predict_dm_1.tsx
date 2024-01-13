@@ -1,7 +1,7 @@
 import {useState} from 'react';
 // import { text } from 'stream/consumers';
 import styled from "styled-components";
-import Header from '@/components/header';
+import Header from '@/components/layouts/header';
 
 
 export default function Predict_dm_1() {
@@ -12,10 +12,10 @@ export default function Predict_dm_1() {
 
     return (
     <>
-      <Header
-        title='ロジスティクス回帰モデルによる'
-        subtitle='糖尿病予測_その1'
-      />
+      <Header>
+        <p>ロジスティクス回帰モデルによる</p>
+        <p>糖尿病予測_その1</p>
+      </Header>
 
       <Explanatory_Img
         loading='lazy'

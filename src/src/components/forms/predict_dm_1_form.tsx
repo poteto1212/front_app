@@ -1,76 +1,160 @@
 import styled from "styled-components";
-import {memo} from 'react'
+import {memo,useState} from 'react'
+import axios from 'axios';
 
 const Predict_dm_1_form = () => {
+    // 身長　体重　空腹時血糖　3時間血糖下面積　血漿インスリン下面積　定常状態血糖値
+    const [ height , setHeight ] = useState<number>()
+    const [ bw , setBw ] = useState<number>()
+    const [ fbs , setFbs ] = useState<number>()
+    const [ glc_3_auc , setGlc_3_auc ] = useState<number>()
+    const [ ins_plasma_auc , setIns_plasma_auc ] = useState<number>()
+    const [ glc_css , setGlc_css ] = useState<number>()
+
+    // 入力体重の取得
+    const input_Height = (height: number) => {
+      setHeight(height)
+    }
+
+    const input_Bw = (bw: number) => {
+      setBw(bw)
+    }
+
+    const input_Fbs = (fbs: number) => {
+      setFbs(fbs)
+    }
+
+    const input_Glc_3_auc = (glc_3_auc: number) => {
+      setGlc_3_auc(glc_3_auc)
+    }
+
+    const input_Ins_plasma_auc = (ins_plasma_auc: number) => {
+      setIns_plasma_auc(ins_plasma_auc)
+    }
+
+    const input_Glc_css = (glc_css: number) => {
+      setGlc_css(glc_css)
+    }  
+
+    //予測結果
+    //API呼び出し処理を作成する
+
+    //型定義
+    //axious関数
+    const url = ""
+    const post_value = {
+
+    };
+    
     return(
       <Body>
         <Form_title>
           <p>主な説明変数</p>
         </Form_title>
 
-        <Div5>
+        <Height>
           <p>身長(cm)</p>
-        </Div5>
-        
-        <FormInput1
-          type="text"
+        </Height>
+        <Height_input
+          type= "number"
           placeholder="身長入力"
           name="height"
           defaultValue=""
           required={false}
+          value={height}
+          onChange = {(e)=>input_Height(e.target.valueAsNumber)}
         />
         
-        <Div6>体重</Div6>
-        <FormInput2
-          type="text"
+        <Bw>
+          <p>体重(kg)</p>
+        </Bw>
+        <BwInput
+          type= "number"
           placeholder="体重入力"
           name="bw"
           required={false}
+          value={bw}
+          onChange = {(e)=>input_Bw(e.target.valueAsNumber)}
         />
-        <Div7>
-          <p>空腹時血糖</p>
-        </Div7>
-        <FormInput3
-          type="text"
-          placeholder="空腹時血糖入力"
+
+        <Fbs>
+          <p>空腹時血糖(mg/dL)</p>
+        </Fbs>
+        <Fbs_input
+          type="number"
+          placeholder="基準値: 70~110mg/dL 140以上でDM"
           name="fbs"
           required={false}
+          value={fbs}
+          onChange = {(e)=>input_Fbs(e.target.valueAsNumber)}
         />
-        <Div8>
+
+        <Glc_3_auc>
           <p>3時間血糖下面積</p>
-        </Div8>
-        <FormInput4
-          type="text"
+        </Glc_3_auc>
+        <Glc_3_auc_input
+          type="number"
           placeholder="3時間血糖下面積"
           name="glc_3_auc"
           required={false}
+          value={glc_3_auc}
+          onChange = {(e)=>input_Glc_3_auc(e.target.valueAsNumber)}
         />
-        <Div9>
-          <p>血漿グルコース下面積</p>
-        </Div9>
-        <FormInput5
-          type="text"
-          placeholder="血漿グルコース下面積"
-          name="glc_plasma_auc"
+
+        <Ins_plasma_auc>
+          <p>血漿インスリン下面積</p>
+        </Ins_plasma_auc>
+        <Ins_plasma_auc_input
+          type="number"
+          placeholder="平均: 186"
+          name="ins_plasma_auc"
           required={false}
+          value={ins_plasma_auc}
+          onChange = {(e)=>input_Ins_plasma_auc(e.target.valueAsNumber)}
         />
-        <Div10>
+
+        <Glc_css>
           <p>定常状態血糖値</p>
-        </Div10>
-        <FormInput6
-          type="text"
+        </Glc_css>
+        <Glc_cssInput
+          type="number"
           placeholder="定常状態血糖値"
           name="glc_css"
           required={false}
+          value={glc_css}
+          onChange = {(e)=>input_Glc_css(e.target.valueAsNumber)}
         />
-        <Div11>
-          <Div12>
+
+        <Input_value>
+          <Input_value_title>
             <p>現在の入力値</p>
-          </Div12>
-          <Div13>
-            <p>現在の入力値</p>
-          </Div13>
-        </Div11>
+          </Input_value_title>
+          <Input_value_table>
+            <Table border={1}>
+              <Thead>
+                <Tr>
+                  <Th>身長</Th>
+                  <Th>体重</Th>
+                  <Th>空腹時血糖</Th>
+                  <Th>3時間血糖下面積</Th>
+                  <Th>血漿インスリン下面積</Th>
+                  <Th>定常状態血糖値</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr>
+                  <Td>{height}cm</Td>
+                  <Td>{bw}kg</Td>
+                  <Td>{fbs}mg/dL</Td>
+                  <Td>{glc_3_auc}</Td>
+                  <Td>{ins_plasma_auc}</Td>
+                  <Td>{glc_css}mg/dL</Td>
+                </Tr>
+              </Tbody>
+            </Table>
+            <p>予測結果: </p>
+          </Input_value_table>
+        </Input_value>
         <Button>予測の実行</Button>
 
       </Body>
@@ -97,7 +181,7 @@ const Form_title = styled.div`
   }
 `;
 
-const Div5 = styled.div`
+const Height = styled.div`
   position: relative;
   height: auto;
   font-size: 25px;
@@ -106,7 +190,7 @@ const Div5 = styled.div`
   margin: 4px auto 0 0;
 `;
 
-const FormInput1 = styled.input`
+const Height_input = styled.input`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -115,14 +199,14 @@ const FormInput1 = styled.input`
   border-style: solid;
   border-color: #ccc;
   max-width: 700px;
-  padding: 15px 200px 15px 10px;
+  padding: 15px 0px 15px 10px;
   @media (max-width: 991px) {
     max-width: 100%;
     padding: 15px 0;
   }
 `;
 
-const Div6 = styled.div`
+const Bw = styled.div`
   position: relative;
   height: auto;
   font-size: 25px;
@@ -131,7 +215,7 @@ const Div6 = styled.div`
   margin: 20px auto 0 0;
 `;
 
-const FormInput2 = styled.input`
+const BwInput = styled.input`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -140,14 +224,14 @@ const FormInput2 = styled.input`
   border-style: solid;
   border-color: #ccc;
   max-width: 700px;
-  padding: 15px 200px 15px 10px;
+  padding: 15px 0px 15px 10px;
   @media (max-width: 991px) {
     max-width: 100%;
     padding: 15px 0;
   }
 `;
 
-const Div7 = styled.div`
+const Fbs = styled.div`
   position: relative;
   height: auto;
   font-size: 25px;
@@ -156,33 +240,7 @@ const Div7 = styled.div`
   margin: 20px auto 0 0;
 `;
 
-const FormInput3 = styled.input`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 20px;
-  border-radius: 3px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #ccc;
-  max-width: 700px;
-  padding: 15px 200px 15px 10px;
-  @media (max-width: 991px) {
-    max-width: 100%;
-    padding: 15px 0;
-  }
-`;
-
-const Div8 = styled.div`
-  position: relative;
-  height: auto;
-  font-size: 25px;
-  max-width: 700px;
-  padding-right: 200px;
-  margin: 20px auto 0 0;
-`;
-
-const FormInput4 = styled.input`
+const Fbs_input = styled.input`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -192,14 +250,14 @@ const FormInput4 = styled.input`
   border-style: solid;
   border-color: #ccc;
   max-width: 700px;
-  padding: 15px 200px 15px 10px;
+  padding: 15px 0px 15px 10px;
   @media (max-width: 991px) {
     max-width: 100%;
     padding: 15px 0;
   }
 `;
 
-const Div9 = styled.div`
+const Glc_3_auc = styled.div`
   position: relative;
   height: auto;
   font-size: 25px;
@@ -208,7 +266,7 @@ const Div9 = styled.div`
   margin: 20px auto 0 0;
 `;
 
-const FormInput5 = styled.input`
+const Glc_3_auc_input = styled.input`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -218,14 +276,14 @@ const FormInput5 = styled.input`
   border-style: solid;
   border-color: #ccc;
   max-width: 700px;
-  padding: 15px 200px 15px 10px;
+  padding: 15px 0px 15px 10px;
   @media (max-width: 991px) {
     max-width: 100%;
     padding: 15px 0;
   }
 `;
 
-const Div10 = styled.div`
+const Ins_plasma_auc = styled.div`
   position: relative;
   height: auto;
   font-size: 25px;
@@ -234,7 +292,33 @@ const Div10 = styled.div`
   margin: 20px auto 0 0;
 `;
 
-const FormInput6 = styled.input`
+const Ins_plasma_auc_input = styled.input`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc;
+  max-width: 700px;
+  padding: 15px 0px 15px 10px;
+  @media (max-width: 991px) {
+    max-width: 100%;
+    padding: 15px 0;
+  }
+`;
+
+const Glc_css = styled.div`
+  position: relative;
+  height: auto;
+  font-size: 25px;
+  max-width: 700px;
+  padding-right: 200px;
+  margin: 20px auto 0 0;
+`;
+
+const Glc_cssInput = styled.input`
     display: flex;
     flex-direction: column;
     position: relative;
@@ -244,37 +328,69 @@ const FormInput6 = styled.input`
     border-style: solid;
     border-color: #ccc;
     max-width: 700px;
-    padding: 15px 200px 15px 10px;
+    padding: 15px 0px 15px 10px;
     @media (max-width: 991px) {
     max-width: 100%;
     padding: 15px 0;
     }
 `;
 
-const Div11 = styled.div`
+const Input_value = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-top: 20px;
+  margin-top: 0px;
   height: 200px;
   padding-right: 8px;
-  max-width: 501px;
+  max-width: 100%;
 `;
 
-const Div12 = styled.div`
+const Input_value_title = styled.div`
   position: relative;
-  margin-top: 20px;
-  height: auto;
+  margin-top: 0px;
+  height: 40px;
   font-size: 25px;
-  max-width: 500px;
+  max-width: 100%;
 `;
 
-const Div13 = styled.div`
+const Input_value_table = styled.div`
   position: relative;
-  margin-top: 20px;
-  height: auto;
+  margin-top: 0px;
+  height: 160px;
   font-size: 25px;
-  max-width: 500px;
+  max-width: 100%;
+`;
+
+const Table = styled.table`
+  border:2px solid;
+  margin:auto;
+  width: 100%;
+  font-size: 15px;
+  border-collapse: collapse;
+  @media (max-width: 991px) {
+    font-size: 10px
+  }
+`;
+
+const Thead = styled.thead`
+  border:1px solid;
+`;
+
+const Tbody = styled.tbody`
+`;
+
+
+const Tr = styled.tr`
+`;
+
+const Th = styled.th`
+  border:1px solid;
+  text-align: center;
+`;
+
+const Td = styled.td`
+  border:1px solid;
+  text-align: center;
 `;
 
 const Button = styled.button`

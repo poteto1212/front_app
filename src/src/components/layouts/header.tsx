@@ -1,15 +1,13 @@
 import styled from "styled-components";
-import {memo} from 'react'
+import {memo,ReactNode} from 'react'
 type Props = {
-    title: string
-    subtitle: string
+    children?: ReactNode
 }
 
-const Header = ({title,subtitle}:Props) => {
+const Header = (props:Props) => {
     return(
     <Head>
-      <p>{title} </p>
-      <p>{subtitle} </p>
+      {props.children}
     </Head>
     )
 };
