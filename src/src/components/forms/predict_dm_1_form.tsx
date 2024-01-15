@@ -19,7 +19,7 @@ const Predict_dm_1_form = () => {
       bw: null,
       fbs: null,
       glc_3_auc: null,
-      glc_plasma_auc: null,//TODO ここ名前おかしいのでサーバー含め修正
+      ins_plasma_auc: null,//TODO ここ名前おかしいのでサーバー含め修正
       glc_css: null,
     }
   );
@@ -59,7 +59,7 @@ const Predict_dm_1_form = () => {
 
   const input_Ins_plasma_auc = (ins_plasma_auc: number) => {
     setIns_plasma_auc(ins_plasma_auc)
-    handle_change("glc_plasma_auc", ins_plasma_auc)
+    handle_change("ins_plasma_auc", ins_plasma_auc)
   }
 
   const input_Glc_css = (glc_css: number) => {
