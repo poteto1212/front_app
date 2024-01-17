@@ -31,7 +31,7 @@ const Predict_dm_1_form = () => {
   const postData = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:9004/predict_dm_1/',
+        process.env.NEXT_PUBLIC_API_URL+'/predict_dm_1/',
         data,
         {
           headers: {
