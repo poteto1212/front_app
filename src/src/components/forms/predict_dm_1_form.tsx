@@ -10,9 +10,7 @@ const Predict_dm_1_form = () => {
   const [glc_3_auc, setGlc_3_auc] = useState<number>()
   const [ins_plasma_auc, setIns_plasma_auc] = useState<number>()
   const [glc_css, setGlc_css] = useState<number>()
-
   //予測結果
-  //API呼び出し処理を作成する
   const [data, setData] = useState(
     {
       height: null,
@@ -29,6 +27,25 @@ const Predict_dm_1_form = () => {
     result: string;
   } | null>(null);
 
+  //API呼び出し
+  const postData = async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:9004/predict_dm_1/',
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        },
+      );
+      setResponse(response.data)
+    } catch (error) {//存在しないrequest等
+      console.error('Error:', error);
+    }
+  };
+  
+  //入力値の取得
   const handle_change = (fieldName: string, value: string | number) => {
     setData((prevData) => ({
       ...prevData,
@@ -36,7 +53,6 @@ const Predict_dm_1_form = () => {
     }));
   };
 
-  // 入力体重の取得
   const input_Height = (height: number) => {
     setHeight(height)
     handle_change("height", height)
@@ -66,26 +82,6 @@ const Predict_dm_1_form = () => {
     setGlc_css(glc_css)
     handle_change("glc_css", glc_css)
   }
-
-  //responsが帰ってくるまで保留する
-  const postData = async () => {
-    try {
-      const response = await axios.post(
-        'http://localhost:9004/predict_dm_1/',
-        data,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        },
-      );
-      console.log('Response:', response.data)
-      setResponse(response.data)
-    } catch (error) {//存在しないrequest等
-      console.error('Error:', error);
-      console.log(data)
-    }
-  };
 
   return (
     <Body>
