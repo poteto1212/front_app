@@ -70,7 +70,7 @@ const EBM_form = () =>{
             <Div11>
               <Div12>
                 <p>
-                  <span style={{'font-size': "30px"}}>結果・考察</span>
+                  <Span>結果・考察</Span>
                 </p>
               </Div12>
               <FormInput7
@@ -363,5 +363,9 @@ const Div14 = styled.div`
     font-size: 25px;
   }
 `;
+
+const Span = styled.span`
+  font-size: 30px;
+`
 
 export default EBM_form
