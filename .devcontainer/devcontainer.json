@@ -6,7 +6,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"infeng.vscode-react-typescript"
+				"infeng.vscode-react-typescript",
+				"jawandarajbir.react-vscode-extension-pack"
 			]
 		}
 	}
